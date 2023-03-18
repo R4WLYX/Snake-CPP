@@ -160,12 +160,17 @@ void Logic() {
 int main() {
     restart:
     Setup();
+    thread input_reader([]() {
+        while (!game_over) {
+            Input();
+        }
+    });
     while (!game_over) {
         Draw();
-        Input();
         Logic();
         this_thread::sleep_for(interval);
-    } system("cls");
+    } input_reader.join();
+    system("cls");
     cout<<game_over_text;
     cout<<"Score: "<<score<<"\n\n";
     cout<<"Press SPACE to restart or ESC to exit.";
