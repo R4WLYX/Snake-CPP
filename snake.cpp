@@ -75,6 +75,8 @@ void Draw() {
     string buffer;
 
     ss<<"Score: "<<score<<"\n\n";
+    ss<<"X: "<<snake.pos.X<<"\n\n";
+    ss<<"Y: "<<snake.pos.Y<<"\n\n";
     buffer += ss.str();
 
     for (int x=0; x<width; x++) {
@@ -138,7 +140,7 @@ void Logic() {
     if (snake.tail_pos.size() == snake.length) snake.tail_pos.pop_back();
 
     // Colisions
-    if (snake.pos.X == 0 || snake.pos.X == width || snake.pos.Y == 0 || snake.pos.Y == height) {
+    if (snake.pos.X == 0 || snake.pos.X == width-1 || snake.pos.Y == 0 || snake.pos.Y == height-1) {
         game_over = true;
         return;
     }
