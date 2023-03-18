@@ -66,8 +66,8 @@ void Setup() {
         snake.pos.Y++;
     }
     snake.tail_pos.clear();
-    fruit.pos.X = rand()%(width-1) + 1;
-    fruit.pos.Y = rand()%(height-1) + 1;
+    fruit.pos.X = rand()%(width-2) + 1;
+    fruit.pos.Y = rand()%(height-2) + 1;
 }
 
 void Draw() {
@@ -75,8 +75,6 @@ void Draw() {
     string buffer;
 
     ss<<"Score: "<<score<<"\n\n";
-    ss<<"X: "<<snake.pos.X<<"\n\n";
-    ss<<"Y: "<<snake.pos.Y<<"\n\n";
     buffer += ss.str();
 
     for (int x=0; x<width; x++) {
@@ -89,7 +87,7 @@ void Draw() {
             curr_pixel = !(x==snake.pos.X && y==snake.pos.Y)? (!(x==fruit.pos.X && y==fruit.pos.Y)? (!(x==0 || x==width-1)? " " : "#") : "*") : "@";
             for (int i = 0; i < snake.tail_pos.size(); i++) {
                 if (x==snake.tail_pos[i].X && y==snake.tail_pos[i].Y) {
-                    curr_pixel = "@";
+                    curr_pixel = "o";
                     break;
                 }
             }
@@ -147,8 +145,8 @@ void Logic() {
     if (Collision(snake.pos, fruit.pos)) {
         snake.length++;
         score++;
-        fruit.pos.X = rand()%(width-1) + 1;
-        fruit.pos.Y = rand()%(height-1) + 1;
+        fruit.pos.X = rand()%(width-2) + 1;
+        fruit.pos.Y = rand()%(height-2) + 1;
     }
 
     for (int i=0; i<snake.tail_pos.size(); i++) {
