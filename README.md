@@ -3,7 +3,7 @@ Snake game made in C++ with janky logics.
 
 # How to play
 Download the exe file and run it.<br>
-(I suggest you use the 8x8 raster font)
+Use WASD to move.
 
 # How to change the font of your termminal (in windows)
 1. Click the terminal icon on the top left.
