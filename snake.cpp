@@ -54,6 +54,16 @@ bool Collision(_COORD a, _COORD b) {
 }
 
 void Setup() {
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 12;
+    cfi.dwFontSize.Y = 12;
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    std::wcscpy(cfi.FaceName, L"Raster Fonts");
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+
     game_over = false;
     frame = 0;
     score = 0;
